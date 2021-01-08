@@ -1,0 +1,73 @@
+﻿<Properties StartupConfiguration="{491D98D5-E089-4544-A64F-15D7EF9037EA}|Default">
+  <MonoDevelop.Ide.ItemProperties.01.Web.Vns.Web PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Vns.Infrastructure/Services/Repository/MenuRepository.cs">
+    <Files>
+      <File FileName="Vns.Web/Areas/Portal/Components/MenuComponent.cs" Line="18" Column="46" />
+      <File FileName="Vns.Web/Areas/Portal/Views/Shared/Components/Menu/Default.cshtml" Line="1" Column="40" />
+      <File FileName="Vns.Web/Areas/Portal/Views/Shared/_Layout.cshtml" Line="124" Column="52" />
+      <File FileName="Vns.Web/Views/Shared/_Footer.cshtml" Line="88" Column="37" />
+      <File FileName="Vns.Infrastructure/Services/IRepository/IMenuRepository.cs" Line="10" Column="20" />
+      <File FileName="Vns.Web/Startup.cs" Line="41" Column="67" />
+      <File FileName="Vns.Web/Areas/Portal/Views/_ViewImports.cshtml" Line="3" Column="32" />
+      <File FileName="Vns.Core/Entities/Menu.cs" Line="12" Column="6" />
+      <File FileName="Vns.Infrastructure/Services/Repository/MenuRepository.cs" Line="20" Column="24" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="thanghd-vnstyle" expanded="True">
+            <Node name="01.Web" expanded="True">
+              <Node name="Vns.Web" expanded="True">
+                <Node name="Areas" expanded="True">
+                  <Node name="Identity" expanded="True" />
+                  <Node name="Portal" expanded="True">
+                    <Node name="Components" expanded="True" />
+                    <Node name="Views" expanded="True">
+                      <Node name="Shared" expanded="True">
+                        <Node name="Components" expanded="True">
+                          <Node name="Menu" expanded="True" />
+                        </Node>
+                      </Node>
+                    </Node>
+                  </Node>
+                </Node>
+              </Node>
+            </Node>
+            <Node name="02.Infrastructure" expanded="True">
+              <Node name="Vns.Infrastructure" expanded="True">
+                <Node name="Services" expanded="True">
+                  <Node name="IRepository" expanded="True" />
+                  <Node name="Repository" expanded="True">
+                    <Node name="MenuRepository.cs" selected="True" />
+                  </Node>
+                </Node>
+              </Node>
+            </Node>
+            <Node name="03.Core" expanded="True">
+              <Node name="Vns.Core" expanded="True">
+                <Node name="Entities" expanded="True" />
+              </Node>
+            </Node>
+            <Node name="04.UnitTest" expanded="True">
+              <Node name="Vns.UnitTest" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.UnitTesting.TestPad">
+        <State name="__root__">
+          <Node name="thanghd-vnstyle" expanded="True">
+            <Node name="04.UnitTest" selected="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.04.UnitTest.Vns.UnitTest PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

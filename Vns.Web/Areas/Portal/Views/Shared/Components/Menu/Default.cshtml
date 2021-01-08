@@ -1,0 +1,15 @@
+﻿@model IEnumerable<Vns.Core.Entities.Menu>
+<!-- Sidebar Menu -->
+@foreach (var menu in Model)
+{
+    <ul class="sidebar-menu" data-widget="tree">
+
+        <li>
+            <a asp-controller="@menu.Controller" asp-action="@menu.Action">
+                <i class="fa fa-link"></i> <span>@menu.Name</span>
+            </a>
+
+        </li>
+    </ul>
+}
+<!-- /.sidebar-menu -->

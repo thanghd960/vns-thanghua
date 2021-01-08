@@ -1,0 +1,9 @@
+/Users/thanghd/workplace/freelancer/thanghd-vnstyle/Vns.Core/bin/Debug/netcoreapp3.1/Vns.Core.deps.json
+/Users/thanghd/workplace/freelancer/thanghd-vnstyle/Vns.Core/bin/Debug/netcoreapp3.1/Vns.Core.dll
+/Users/thanghd/workplace/freelancer/thanghd-vnstyle/Vns.Core/bin/Debug/netcoreapp3.1/Vns.Core.pdb
+/Users/thanghd/workplace/freelancer/thanghd-vnstyle/Vns.Core/obj/Debug/netcoreapp3.1/Vns.Core.csprojAssemblyReference.cache
+/Users/thanghd/workplace/freelancer/thanghd-vnstyle/Vns.Core/obj/Debug/netcoreapp3.1/Vns.Core.AssemblyInfoInputs.cache
+/Users/thanghd/workplace/freelancer/thanghd-vnstyle/Vns.Core/obj/Debug/netcoreapp3.1/Vns.Core.AssemblyInfo.cs
+/Users/thanghd/workplace/freelancer/thanghd-vnstyle/Vns.Core/obj/Debug/netcoreapp3.1/Vns.Core.csproj.CoreCompileInputs.cache
+/Users/thanghd/workplace/freelancer/thanghd-vnstyle/Vns.Core/obj/Debug/netcoreapp3.1/Vns.Core.dll
+/Users/thanghd/workplace/freelancer/thanghd-vnstyle/Vns.Core/obj/Debug/netcoreapp3.1/Vns.Core.pdb
