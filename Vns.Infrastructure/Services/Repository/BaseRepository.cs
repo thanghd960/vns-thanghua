@@ -21,13 +21,13 @@ namespace Vns.Infrastructure.Services.Repository
 
         }
 
-        public async Task Delete(TEntity entity)
+        public void Delete(TEntity entity)
         {
             dbContext.Set<TEntity>().Remove(entity);
-            await dbContext.SaveChangesAsync();
+            dbContext.SaveChanges();
         }
 
-        public async Task Delete(int id)
+        public void DeleteById(int id)
         {
             TEntity entity = dbContext.Set<TEntity>().SingleOrDefault(e => e.Id == id && e.Status == true);
             if (entity == null)
@@ -35,18 +35,43 @@ namespace Vns.Infrastructure.Services.Repository
                 throw new Exception("Id not found");
             }
             dbContext.Set<TEntity>().Remove(entity);
-            await dbContext.SaveChangesAsync();
+            dbContext.SaveChanges();
 
         }
 
-        public Task<IEnumerable<TEntity>> Get(Expression<Func<TEntity, bool>> filter = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null, string includeProperties = "")
+        public IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> filter = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null, string includeProperties = "")
         {
-            throw new NotImplementedException();
+            IQueryable<TEntity> query = dbSet;
+
+            if (filter != null)
+            {
+                query = query.Where(filter);
+            }
+
+            if (includeProperties != null)
+            {
+                foreach (var includeProperty in includeProperties.Split
+                (new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    query = query.Include(includeProperty);
+                }
+            }
+
+
+            if (orderBy != null)
+            {
+                return orderBy(query).ToList();
+            }
+            else
+            {
+                return query.ToList();
+            }
+
         }
 
-        public Task<TEntity> GetByID(object id)
+        public virtual TEntity GetByID(object id)
         {
-            throw new NotImplementedException();
+            return dbSet.Find(id);
         }
 
         public virtual IEnumerable<TEntity> GetWithRawSql(string query, params object[] parameters)
@@ -55,14 +80,15 @@ namespace Vns.Infrastructure.Services.Repository
         }
 
 
-        public Task Insert(TEntity entity)
+        public async Task Insert(TEntity entity)
         {
-            throw new NotImplementedException();
+            await dbContext.AddAsync(entity);
         }
 
-        public Task Update(TEntity entityToUpdate)
+        public virtual void Update(TEntity entityToUpdate)
         {
-            throw new NotImplementedException();
+            dbSet.Attach(entityToUpdate);
+            dbContext.Entry(entityToUpdate).State = EntityState.Modified;
         }
     }
 }

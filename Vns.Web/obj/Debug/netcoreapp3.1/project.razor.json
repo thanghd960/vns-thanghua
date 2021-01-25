@@ -14409,6 +14409,11 @@
   "RootNamespace": "Vns.Web",
   "Documents": [
     {
+      "FilePath": "/Users/thanghd/workplace/freelancer/thanghd-vnstyle/Vns.Web/Areas/Portal/Views/Article/Detail.cshtml",
+      "TargetPath": "Areas\\Portal\\Views\\Article\\Detail.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/Users/thanghd/workplace/freelancer/thanghd-vnstyle/Vns.Web/Views/Shared/_Navbar.cshtml",
       "TargetPath": "Views\\Shared\\_Navbar.cshtml",
       "FileKind": "mvc"
@@ -14439,8 +14444,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/Users/thanghd/workplace/freelancer/thanghd-vnstyle/Vns.Web/Areas/Portal/Views/Article/Create.cshtml",
+      "TargetPath": "Areas\\Portal\\Views\\Article\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/Users/thanghd/workplace/freelancer/thanghd-vnstyle/Vns.Web/Views/_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/thanghd/workplace/freelancer/thanghd-vnstyle/Vns.Web/Areas/Portal/Views/Article/Index.cshtml",
+      "TargetPath": "Areas\\Portal\\Views\\Article\\Index.cshtml",
       "FileKind": "mvc"
     },
     {

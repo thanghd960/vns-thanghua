@@ -33,7 +33,7 @@ namespace Vns.Infrastructure.Services.Repository
                     Id = 2,
                     Name = "Bài viết",
                     Url = "/articles",
-                    Controller = "about",
+                    Controller = "article",
                     Action = "index",
                     CreatedBy = "Admin",
                     CreatedDate = new DateTime(),

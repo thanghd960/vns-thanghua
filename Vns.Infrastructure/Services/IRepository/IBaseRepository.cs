@@ -9,13 +9,13 @@ namespace Vns.Infrastructure.Services.IRepository
 {
     public interface IBaseRepository<TEntity> where TEntity : BaseEntity
     {
-        Task Delete(TEntity entityToDelete);
-        Task Delete(int id);
-        Task<IEnumerable<TEntity>> Get(Expression<Func<TEntity, bool>> filter = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null, string includeProperties = "");
-        Task<TEntity> GetByID(object id);
+        void Delete(TEntity entityToDelete);
+        void DeleteById(int id);
+        IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> filter = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null, string includeProperties = "");
+        TEntity GetByID(object id);
         IEnumerable<TEntity> GetWithRawSql(string query, params object[] parameters);
         Task Insert(TEntity entity);
-        Task Update(TEntity entityToUpdate);
+        void Update(TEntity entityToUpdate);
     }
 
 }

@@ -39,6 +39,7 @@ namespace Vns.Web
                 .AddEntityFrameworkStores<VnstyleDbContext>();
 
             services.AddScoped<IMenuRepository, MenuRepository>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddControllersWithViews();
             services.AddRazorPages();
         }

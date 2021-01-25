@@ -230,6 +230,9 @@ namespace Vns.Web.Migrations.VnstyleDb
                     b.Property<DateTime>("ApprovedDate")
                         .HasColumnType("timestamp without time zone");
 
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("integer");
+
                     b.Property<string>("Content")
                         .HasColumnType("text");
 
@@ -239,14 +242,29 @@ namespace Vns.Web.Migrations.VnstyleDb
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp without time zone");
 
+                    b.Property<string>("DescriptionShort")
+                        .HasColumnType("text");
+
                     b.Property<int>("Index")
                         .HasColumnType("integer");
+
+                    b.Property<bool>("IsFeature")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("IsHomePage")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("IsTrendingNow")
+                        .HasColumnType("boolean");
 
                     b.Property<bool>("Status")
                         .HasColumnType("boolean");
 
                     b.Property<string>("Title")
                         .HasColumnType("text");
+
+                    b.Property<int>("View")
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
