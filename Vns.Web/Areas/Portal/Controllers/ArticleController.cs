@@ -26,7 +26,7 @@ namespace Vns.Web.Areas.Portal.Controllers
             return View();
         }
 
-        public IActionResult Detail(int id) {
+        public IActionResult Detail(int? id) {
             return View();
         }
 

@@ -4,7 +4,6 @@ using Microsoft.Extensions.Logging;
 using Vns.Core.Commons;
 using Vns.Core.Entities;
 using Vns.Infrastructure.ModelView.ArticleModelView;
-using Vns.Infrastructure.ModelView.ImageModelView;
 using Vns.Infrastructure.Services.IRepository;
 
 namespace Vns.Infrastructure.Services {
@@ -15,8 +14,6 @@ namespace Vns.Infrastructure.Services {
         private IBaseRepository<ArticleTag> _articleTagServices;
         private IBaseRepository<Tag> _tagServices;
         private IBaseRepository<Image> _imageServices;
-        private IBaseRepository<ArticleImage> _articleImageServices;
-        private IBaseRepository<CategoryArticle> _categoryServices;
 
         public ResponseData<int> approveArticle(int id)
         {
@@ -85,17 +82,23 @@ namespace Vns.Infrastructure.Services {
 
         }
 
-        public ResponseData<ArticleModelRequest> getArticleById(int id)
+        public ResponseData<ArticleModelView> getArticleById(int id)
+        {
+            IPaged
+            var article = _articleService.GetByID(id);
+            if (article == null){
+                return null;
+            }
+        
+            return null;
+        }
+
+        public ResponseData<ArticleModelView> insertArticle(ArticleModelView request)
         {
             throw new NotImplementedException();
         }
 
-        public ResponseData<ArticleModelRequest> insertArticle(ArticleModelRequest request)
-        {
-            throw new NotImplementedException();
-        }
-
-        public ResponseData<ArticleModelRequest> updateArticle(ArticleModelRequest request)
+        public ResponseData<ArticleModelView> updateArticle(ArticleModelView request)
         {
             throw new NotImplementedException();
         }

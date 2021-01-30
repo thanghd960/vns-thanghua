@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Vns.Infrastructure.Data;
@@ -9,9 +10,10 @@ using Vns.Infrastructure.Data;
 namespace Vns.Web.Migrations.VnstyleDb
 {
     [DbContext(typeof(VnstyleDbContext))]
-    partial class VnstyleDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210126152001_update-database-1")]
+    partial class updatedatabase1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

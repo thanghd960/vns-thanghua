@@ -3,7 +3,7 @@ using Vns.Core.Commons;
 
 public class ResponseData<TEntity>
 {   
-    public List<TEntity> Data { get; set; }
+    public IPagedList<TEntity> Data { get; set; }
     public ResultStatus Result { get; set; }
 }
 

@@ -18,5 +18,7 @@ namespace Vns.Infrastructure.Data
         public DbSet<Tag> Tags { get; set; }
         public DbSet<Image> Images { get; set; }
         public DbSet<SocialMedia> SocialMedias { get; set; }
+        public DbSet<Video> Videos { get; set; }
+        public DbSet<CategoryArticle> Categories { get; set; }
     }
 }

@@ -1,34 +1,37 @@
 ﻿<Properties StartupConfiguration="{491D98D5-E089-4544-A64F-15D7EF9037EA}|Default">
   <MonoDevelop.Ide.ItemProperties.01.Web.Vns.Web PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Vns.Infrastructure/ModelView/ResponseData.cs">
+    <Files>
+      <File FileName="Vns.Core/Entities/BaseEntity.cs" Line="19" Column="10" />
+      <File FileName="Vns.Infrastructure/Services/Repository/UnitOfWork.cs" Line="1" Column="1" />
+      <File FileName="Vns.Infrastructure/Services/IRepository/IMenuRepository.cs" Line="14" Column="1" />
+      <File FileName="Vns.Core/Commons/Paging/Paging.cs" Line="1" Column="1" />
+      <File FileName="Vns.Core/Commons/Paging/PagedList.cs" Line="85" Column="16" />
+      <File FileName="Vns.Core/Commons/Paging/IPagedList.cs" Line="1" Column="1" />
+      <File FileName="Vns.Infrastructure/ModelView/ArticleModelView/ArticleModelView.cs" Line="15" Column="44" />
+      <File FileName="Vns.Infrastructure/Services/Repository/MenuRepository.cs" Line="10" Column="2" />
+      <File FileName="Vns.Infrastructure/Services/Repository/ArticleRepository.cs" Line="52" Column="52" />
+      <File FileName="Vns.Infrastructure/ModelView/ResponseData.cs" Line="13" Column="5" />
+      <File FileName="Vns.Infrastructure/ModelView/BaseResponse.cs" Line="1" Column="1" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="thanghd-vnstyle" expanded="True">
             <Node name="01.Web" expanded="True">
-              <Node name="Vns.Web" expanded="True">
-                <Node name="Areas" expanded="True">
-                  <Node name="Portal" expanded="True" />
-                </Node>
-              </Node>
+              <Node name="Vns.Web" expanded="True" />
             </Node>
             <Node name="02.Infrastructure" expanded="True">
               <Node name="Vns.Infrastructure" expanded="True">
                 <Node name="ModelView" expanded="True">
-                  <Node name="ArticleModelView" expanded="True" />
-                  <Node name="ImageModelView" expanded="True" />
-                </Node>
-                <Node name="Services" expanded="True">
-                  <Node name="IRepository" expanded="True" />
-                  <Node name="Repository" expanded="True" />
+                  <Node name="ResponseData.cs" selected="True" />
                 </Node>
               </Node>
             </Node>
             <Node name="03.Core" expanded="True">
               <Node name="Vns.Core" expanded="True">
                 <Node name="Commons" expanded="True">
-                  <Node name="WebHelper" expanded="True" />
-                  <Node name="FriendlyUrlHelper.cs" selected="True" />
+                  <Node name="Paging" expanded="True" />
                 </Node>
                 <Node name="Entities" expanded="True" />
               </Node>

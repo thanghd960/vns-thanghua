@@ -8,7 +8,9 @@ namespace Vns.Core.Commons
         {
             { eMessageCode.ERROR_000001, "Đã có lỗi xảy ra !!!" },
             { eMessageCode.ERROR_000002, "Không tìm thấy bài viết với id {0}" },
-            { eMessageCode.SUCCESS_000001, "Article {0} was approved"}
+            { eMessageCode.SUCCESS_000001, "Article {0} was approved"},
+            { eMessageCode.SUCCESS_000002, "Article {0} was inactive"},
+            { eMessageCode.SYSTEM_ERROR, "System error: {0}"},
         };
 
         public static string Get(eMessageCode errorCode)
@@ -31,5 +33,6 @@ namespace Vns.Core.Commons
         ERROR_000002,
         SUCCESS_000001,
         SUCCESS_000002,
+        SYSTEM_ERROR
     }
 }
