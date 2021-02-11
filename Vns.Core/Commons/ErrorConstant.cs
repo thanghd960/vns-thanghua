@@ -4,35 +4,33 @@ namespace Vns.Core.Commons
 {
     public static class ErrorConstant 
     {
-        private static Dictionary<eMessageCode, string> keys = new Dictionary<eMessageCode, string>()
+        private static Dictionary<MessageCode, string> keysError = new Dictionary<MessageCode, string>()
         {
-            { eMessageCode.ERROR_000001, "Đã có lỗi xảy ra !!!" },
-            { eMessageCode.ERROR_000002, "Không tìm thấy bài viết với id {0}" },
-            { eMessageCode.SUCCESS_000001, "Article {0} was approved"},
-            { eMessageCode.SUCCESS_000002, "Article {0} was inactive"},
-            { eMessageCode.SYSTEM_ERROR, "System error: {0}"},
+            { MessageCode.Exception, "Error: {0}"},
+            { MessageCode.NullPointer, "Null Pointer"},
+            { MessageCode.BE0001, "Đã có lỗi xảy ra !!! {0}" },
+            { MessageCode.BE0002, "Không tìm thấy bài viết với mã {0}"}
         };
 
-        public static string Get(eMessageCode errorCode)
+        public static string Get(MessageCode errorCode)
         {
-            return keys[errorCode];
+            return keysError[errorCode];
         }
 
-        public static string GetMessageWithData (eMessageCode errorCode, string value)
+        public static string GetMessageWithData (MessageCode errorCode, string value)
         {
-            string messageTemplate = keys[errorCode];
-            String message = String.Format(messageTemplate, value);
+            string messageTemplate = keysError[errorCode];
+            string message = string.Format(messageTemplate, value);
             return message;
         }
 
     }
 
-    public enum eMessageCode
+    public enum MessageCode
     {
-        ERROR_000001,
-        ERROR_000002,
-        SUCCESS_000001,
-        SUCCESS_000002,
-        SYSTEM_ERROR
+        Exception,
+        NullPointer,
+        BE0001,
+        BE0002,
     }
 }

@@ -13,7 +13,7 @@ namespace Vns.Core.Entities
 
         public BaseEntity()
         {
-            Status = true;
+            Status = false;
             CreatedDate = DateTime.Now;
             CreatedBy = "admin";
         }
@@ -30,7 +30,7 @@ namespace Vns.Core.Entities
             ApprovedBy = "admin";
             ApprovedDate = DateTime.Now;
         }
-        
+
     }
 
 }

@@ -9,6 +9,9 @@
     <Folder Include="Commons\" />
     <Folder Include="Commons\Paging\" />
     <Folder Include="Commons\WebHelper\" />
+    <Folder Include="Commons\BaseResponse\" />
+    <Folder Include="Commons\Generic\" />
+    <Folder Include="Commons\Enum\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />

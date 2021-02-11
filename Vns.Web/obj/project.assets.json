@@ -9529,7 +9529,7 @@
       "outputPath": "/Users/thanghd/workplace/freelancer/thanghd-vnstyle/Vns.Web/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/thanghd/.config/NuGet/NuGet.Config"
+        "/Users/thanghd/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"

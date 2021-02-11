@@ -1,5 +1,4 @@
-﻿using System;
-namespace Vns.Core.Entities
+﻿namespace Vns.Core.Entities
 {
     public class ArticleTag : BaseEntity
     {

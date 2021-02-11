@@ -11,84 +11,142 @@ namespace Vns.Infrastructure.Services.Repository
 {
     public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : BaseEntity
     {
-        internal VnstyleDbContext dbContext;
-        internal DbSet<TEntity> dbSet;
+        private readonly DbContext _dbContext;
+        private readonly DbSet<TEntity> _dbSet;
 
-        public BaseRepository(VnstyleDbContext dbContext)
+        public BaseRepository(DbContext dbContext)
         {
-            this.dbContext = dbContext;
-            this.dbSet = dbContext.Set<TEntity>();
-
+            _dbContext = dbContext;
+            _dbSet = dbContext.Set<TEntity>();
         }
 
-        public void Delete(TEntity entity)
+        public IQueryable<TEntity> Table => _dbSet;
+
+        public TEntity GetById(params object[] ids)
         {
-            dbContext.Set<TEntity>().Remove(entity);
-            dbContext.SaveChanges();
+            return _dbSet.Find(ids);
         }
 
-        public void DeleteById(int id)
+        public virtual IQueryable<TEntity> GetAll(params string[] includes)
         {
-            TEntity entity = dbContext.Set<TEntity>().SingleOrDefault(e => e.Id == id && e.Status == true);
-            if (entity == null)
-            {
-                throw new Exception("Id not found");
-            }
-            dbContext.Set<TEntity>().Remove(entity);
-            dbContext.SaveChanges();
-
+            return Get(null, null, includes);
         }
 
-        public IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> filter = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null, string includeProperties = "")
+        public virtual IQueryable<TEntity> GetAll(Expression<Func<TEntity, bool>> @where = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null, params Expression<Func<TEntity, object>>[] navigationProperties)
         {
-            IQueryable<TEntity> query = dbSet;
+            IQueryable<TEntity> dbQuery = this.Table;
+            //Apply eager loading
+            dbQuery = navigationProperties.Aggregate(dbQuery, (current, navigationProperty) => current.Include(navigationProperty));
+            if (where != null) dbQuery = dbQuery.Where(where);
+            return orderBy != null ? orderBy(dbQuery) : dbQuery;
+        }
 
+        public IQueryable<TEntity> Get(Expression<Func<TEntity, bool>> filter = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null, params string[] includeProperties)
+        {
+            var query = Table;
             if (filter != null)
             {
                 query = query.Where(filter);
             }
 
-            if (includeProperties != null)
-            {
-                foreach (var includeProperty in includeProperties.Split
-                (new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
-                {
-                    query = query.Include(includeProperty);
-                }
-            }
-
-
-            if (orderBy != null)
-            {
-                return orderBy(query).ToList();
-            }
-            else
-            {
-                return query.ToList();
-            }
-
+            query = includeProperties.Aggregate(query, (current, includeProperty) => current.Include(includeProperty));
+            return orderBy != null ? orderBy(query) : query;
         }
-
-        public virtual TEntity GetByID(object id)
-        {
-            return dbSet.Find(id);
-        }
-
-        public virtual IEnumerable<TEntity> GetWithRawSql(string query, params object[] parameters)
-        {
-            return dbSet.FromSqlRaw(query, parameters).ToList();
-        }
-
 
         public async Task Insert(TEntity entity)
         {
-            await dbContext.AddAsync(entity);
+            await _dbContext.AddAsync(entity);
         }
 
-        public virtual void Update(TEntity entityToUpdate)
+        public List<TEntity> InsertRange(IEnumerable<TEntity> listEntity)
         {
-            dbSet.Attach(entityToUpdate);
-            dbContext.Entry(entityToUpdate).State = EntityState.Modified;
+            return listEntity.Select(entity =>
+            {
+                _dbSet.Add(entity);
+                return entity;
+            }).ToList();
+        }
+
+        public void Update(TEntity entity, params string[] changedProes)
+        {
+            if (changedProes == null)
+            {
+                changedProes = new string[] { };
+            }
+
+            _dbSet.Attach(entity);
+            if (changedProes.Any())
+            {
+                //Only change some properties
+                foreach (string propertyName in changedProes)
+                {
+                    _dbContext.Entry(entity).Property(propertyName).IsModified = true;
+                }
+            }
+            else
+            {
+                _dbContext.Entry(entity).State = EntityState.Modified;
+            }
+        }
+
+        public void Delete(TEntity entity)
+        {
+            try
+            {
+                if (_dbContext.Entry(entity).State == EntityState.Detached)
+                {
+                    _dbSet.Attach(entity);
+                }
+                _dbSet.Remove(entity);
+            }
+            catch (Exception)
+            {
+                RefreshEntity(entity);
+                throw;
+            }
+        }
+
+       
+
+        public virtual int Count(Expression<Func<TEntity, bool>> filter = null)
+        {
+            return filter == null ? Table.Count() : Table.Count(filter);
+        }
+
+        public virtual bool Any(Expression<Func<TEntity, bool>> filter = null)
+        {
+            return filter == null ? Table.AsNoTracking().Any() : Table.AsNoTracking().Any(filter);
+        }
+
+
+        public virtual void RefreshEntity(TEntity entityToReload)
+        {
+            _dbContext.Entry(entityToReload).Reload();
+        }
+
+        public int Update(Expression<Func<TEntity, bool>> filterExpression, Expression<Func<TEntity, TEntity>> updateExpression)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<int> DeleteRangeAsync(Expression<Func<TEntity, bool>> predicate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int DeleteRange(Expression<Func<TEntity, bool>> predicate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int DeleteRange(IEnumerable<TEntity> entities)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int SaveChanges()
+        {
+            return _dbContext.SaveChanges();
         }
     }
 }

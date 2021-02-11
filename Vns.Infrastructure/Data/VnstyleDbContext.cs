@@ -1,11 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Vns.Core.Entities;
+using Vns.Infrastructure.Services;
 
 namespace Vns.Infrastructure.Data
 {
-    public class VnstyleDbContext : IdentityDbContext
+    public class VnstyleDbContext : IdentityDbContext, IDbContext
     {
         public VnstyleDbContext(DbContextOptions<VnstyleDbContext> options)
                     : base(options)
@@ -20,5 +23,26 @@ namespace Vns.Infrastructure.Data
         public DbSet<SocialMedia> SocialMedias { get; set; }
         public DbSet<Video> Videos { get; set; }
         public DbSet<CategoryArticle> Categories { get; set; }
+
+        public int ExecuteSqlCommand(string sql, bool doNotEnsureTransaction = false, int? timeout = null, params object[] parameters)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<TEntity> ExecuteStoredProcedureList<TEntity>(string commandText, params object[] parameters) where TEntity : class, new()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<int> SaveChangesAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<TElement> SqlQuery<TElement>(string sql, params object[] parameters)
+        {
+            throw new NotImplementedException();
+            // return Database.
+        }
     }
 }
