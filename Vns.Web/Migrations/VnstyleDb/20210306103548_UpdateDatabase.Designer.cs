@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Vns.Infrastructure.Data;
@@ -9,9 +10,10 @@ using Vns.Infrastructure.Data;
 namespace Vns.Web.Migrations.VnstyleDb
 {
     [DbContext(typeof(VnstyleDbContext))]
-    partial class VnstyleDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210306103548_UpdateDatabase")]
+    partial class UpdateDatabase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -245,9 +247,6 @@ namespace Vns.Web.Migrations.VnstyleDb
                     b.Property<string>("DescriptionShort")
                         .HasColumnType("text");
 
-                    b.Property<int>("ImageId")
-                        .HasColumnType("integer");
-
                     b.Property<int>("Index")
                         .HasColumnType("integer");
 
@@ -272,6 +271,42 @@ namespace Vns.Web.Migrations.VnstyleDb
                     b.HasKey("Id");
 
                     b.ToTable("Articles");
+                });
+
+            modelBuilder.Entity("Vns.Core.Entities.ArticleImage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<string>("ApprovedBy")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("ApprovedDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<int>("ArticleId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<int>("ImageId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("Index")
+                        .HasColumnType("integer");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("boolean");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ArticleImages");
                 });
 
             modelBuilder.Entity("Vns.Core.Entities.ArticleTag", b =>
@@ -310,7 +345,7 @@ namespace Vns.Web.Migrations.VnstyleDb
                     b.ToTable("ArticleTags");
                 });
 
-            modelBuilder.Entity("Vns.Core.Entities.Category", b =>
+            modelBuilder.Entity("Vns.Core.Entities.CategoryArticle", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -328,9 +363,6 @@ namespace Vns.Web.Migrations.VnstyleDb
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp without time zone");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("text");
 
                     b.Property<int>("Index")
                         .HasColumnType("integer");
@@ -473,17 +505,11 @@ namespace Vns.Web.Migrations.VnstyleDb
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<string>("Description")
-                        .HasColumnType("text");
-
                     b.Property<int>("Index")
                         .HasColumnType("integer");
 
                     b.Property<bool>("Status")
                         .HasColumnType("boolean");
-
-                    b.Property<string>("Title")
-                        .HasColumnType("text");
 
                     b.HasKey("Id");
 

@@ -1,0 +1,14 @@
+@{
+  var root = "Trang chủ";
+  var pageName = ViewData["PageName"];
+  var action = ViewData["Action"];
+}
+<section class="content-header">
+  <h1>@pageName<small>Bảng Điều Khiển</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a asp-controller="Home" asp-action="Index"><i class="fa fa-dashboard"></i>@root</a></li>
+    <li><a href="#">@pageName</a></li>
+    <li class="active">@action</li>
+  </ol>
+</section>

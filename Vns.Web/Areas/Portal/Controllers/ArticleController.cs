@@ -1,11 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Vns.Core.Entities;
+using Vns.Core.Commons;
+using Vns.Core.Commons.BaseResponse;
+using Vns.Core.Commons.Enum;
+using Vns.Core.Commons.Paging;
+using Vns.Infrastructure.ModelView.ArticleModel;
 using Vns.Infrastructure.Services.IRepository;
-using Vns.Infrastructure.Services.Repository;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -14,42 +13,77 @@ namespace Vns.Web.Areas.Portal.Controllers
     public class ArticleController : BaseController
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IArticleRepository _articleRepository;
 
-        public ArticleController(IUnitOfWork unitOfWork)
+        public ArticleController(IUnitOfWork unitOfWork, IArticleRepository articleRepository)
         {
             _unitOfWork = unitOfWork;
+            _articleRepository = articleRepository;
         }
 
         // GET: /<controller>/
-        public IActionResult Index()
+        public IActionResult Index(string search = "", int pageIndex = 0, bool isActive = true)
         {
-            return View();
+            ViewData["Title"] = "Bài Viết";
+            ArticleRequest request = new ArticleRequest()
+            {
+                Keyword = search == "" ? null : search,
+                PageIndex = pageIndex,
+                CategoryId = 1,
+                Status = isActive == true ? EStatus.Actived : EStatus.Inactived
+            };
+            IPagedList<ArticleDto> articles = _articleRepository.GetList(request);
+            
+            return View(articles);
         }
 
         public IActionResult Detail(int? id) {
+            ViewData["Title"] = "Bài Viết";
+            ViewData["Action"] = "Chi tiết";
             return View();
         }
 
         public IActionResult Create()
         {
-            var article = new Article()
-            {
-                Title = "Những câu STT hay về hình xăm (Tattoo) ý nghĩa",
-                DescriptionShort = "Xăm hình vốn là một nghệ thuật có từ lâu đời và được giới trẻ ngày nay yêu thích. Đằng sau một hình xăm luôn ẩn chứa nhiều ý nghĩa và kỉ niệm buồn vui của người xăm hình. Phong trào xăm hình ngày càng phổ biến và phát triển mạnh mẽ, xăm hình không chỉ làm đẹp mà còn thể hiện phần nào tính cách của chủ nhân. Dưới đây là những câu stt hình xăm hay và ý  nghĩa, mời bạn xem qua. ",
-                IsFeature = true,
-                IsHomePage = true,
-                IsTrendingNow = true,
-                Content = "Xăm hình là tốt hay xấu? 1. Nhân cách không nằm ở hình xăm",
-                Index = 1,
-                ApprovedBy = "thanghua",
-                CategoryId = 1,
-                View = 0
-            };
-            _unitOfWork.Article.Insert(article);
-            _unitOfWork.Commit();
+            ViewData["Title"] = "Bài Viết";
+            ViewData["Action"] = "Tạo mới";
             return View();
         }
 
+
+        [HttpPost]
+        public JsonResult CreateArticle(ArticleDto article)
+        {
+            DetailResponse<ArticleDto> result = new DetailResponse<ArticleDto>();
+            if (article.Title == null)
+            {
+                result = new DetailResponse<ArticleDto>
+                {
+                    Status = false,
+                    Data = article,
+                    Code = MessageCode.BE0003,
+                    Message = ErrorConstant.Get(MessageCode.BE0003)
+
+                };
+                return Json(result);
+            }
+
+            if (article.Description == null)
+            {
+                result = new DetailResponse<ArticleDto>
+                {
+                    Status = false,
+                    Data = article,
+                    Code = MessageCode.BE0004,
+                    Message = ErrorConstant.Get(MessageCode.BE0004)
+
+                };
+                return Json(result);
+            }
+    
+            result = _articleRepository.Insert(article);
+            return Json(result);
+        }
 
     }
 }

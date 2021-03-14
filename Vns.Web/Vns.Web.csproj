@@ -44,5 +44,7 @@
     <Folder Include="Areas\Portal\Views\Shared\Components\" />
     <Folder Include="Areas\Portal\Components\" />
     <Folder Include="Areas\Portal\Views\Shared\Components\Menu\" />
+    <Folder Include="wwwroot\imgs\" />
+    <Folder Include="wwwroot\static\images\article\" />
   </ItemGroup>
 </Project>

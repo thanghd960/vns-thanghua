@@ -15,6 +15,7 @@ using Microsoft.Extensions.Hosting;
 using Vns.Infrastructure.Data;
 using Vns.Infrastructure.Services.IRepository;
 using Vns.Infrastructure.Services.Repository;
+using Vns.Infrastructure.Services;
 
 namespace Vns.Web
 {
@@ -38,7 +39,9 @@ namespace Vns.Web
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<VnstyleDbContext>();
 
+            // services.AddScoped<IBaseRepository, BaseRepository<IEntity>>();
             services.AddScoped<IMenuRepository, MenuRepository>();
+            services.AddScoped<IArticleRepository, ArticleRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddControllersWithViews();
             services.AddRazorPages();

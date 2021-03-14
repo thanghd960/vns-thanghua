@@ -12422,6 +12422,49 @@
         }
       },
       {
+        "HashCode": -479408432,
+        "Kind": "MVC.ViewComponent",
+        "Name": "__Generated__HeaderPortalViewComponentTagHelper",
+        "AssemblyName": "Vns.Web",
+        "CaseSensitive": false,
+        "TagMatchingRules": [
+          {
+            "TagName": "vc:header-portal",
+            "Attributes": [
+              {
+                "Name": "page-name"
+              },
+              {
+                "Name": "action-name"
+              }
+            ]
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "MVC.ViewComponent",
+            "Name": "page-name",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "pageName"
+            }
+          },
+          {
+            "Kind": "MVC.ViewComponent",
+            "Name": "action-name",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "actionName"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "ITagHelper",
+          "Common.TypeName": "__Generated__HeaderPortalViewComponentTagHelper",
+          "MVC.ViewComponent.Name": "HeaderPortal"
+        }
+      },
+      {
         "HashCode": -104973648,
         "Kind": "MVC.ViewComponent",
         "Name": "__Generated__MenuViewComponentTagHelper",
@@ -14446,6 +14489,11 @@
     {
       "FilePath": "/Users/thanghd/workplace/freelancer/thanghd-vnstyle/Vns.Web/Areas/Portal/Views/Article/Create.cshtml",
       "TargetPath": "Areas\\Portal\\Views\\Article\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/thanghd/workplace/freelancer/thanghd-vnstyle/Vns.Web/Areas/Portal/Views/Shared/Components/HeaderPortal/Default.cshtml",
+      "TargetPath": "Areas\\Portal\\Views\\Shared\\Components\\HeaderPortal\\Default.cshtml",
       "FileKind": "mvc"
     },
     {
