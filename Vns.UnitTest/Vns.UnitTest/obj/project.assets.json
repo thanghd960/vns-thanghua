@@ -3997,7 +3997,7 @@
       "outputPath": "/Users/thanghd/workplace/freelancer/thanghd-vnstyle/Vns.UnitTest/Vns.UnitTest/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/thanghd/.config/NuGet/NuGet.Config"
+        "/Users/thanghd/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"

@@ -1,8 +1,9 @@
 ﻿using System;
 namespace Vns.Core.Entities
 {
-    public class CategoryArticle: BaseEntity
+    public class Category: BaseEntity
     {
         public string Name { get; set; }
+        public string Description { get; set; }
     }
 }

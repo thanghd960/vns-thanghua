@@ -69,7 +69,13 @@ namespace Vns.Web
             app.UseAuthentication();
             app.UseAuthorization();
 
-            
+            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            {
+                var context = serviceScope.ServiceProvider.GetRequiredService<VnstyleDbContext>();
+                context.Database.Migrate();
+                context.Database.EnsureCreated();
+            }
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

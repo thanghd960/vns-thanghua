@@ -17,12 +17,28 @@ namespace Vns.Infrastructure.Data
 
         public DbSet<Article> Articles { get; set; }
         public DbSet<ArticleTag> ArticleTags { get; set; }
-        public DbSet<ArticleImage> ArticleImages { get; set; }
         public DbSet<Tag> Tags { get; set; }
         public DbSet<Image> Images { get; set; }
         public DbSet<SocialMedia> SocialMedias { get; set; }
         public DbSet<Video> Videos { get; set; }
-        public DbSet<CategoryArticle> Categories { get; set; }
+        public DbSet<Category> Categories { get; set; }
+
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+
+            foreach (var entityType in builder.Model.GetEntityTypes())
+            {
+                var table = entityType.GetTableName();
+                if (table.StartsWith("AspNet"))
+                {
+                    entityType.SetTableName(table.Substring(6));
+                }
+            };
+
+
+        }
 
         public int ExecuteSqlCommand(string sql, bool doNotEnsureTransaction = false, int? timeout = null, params object[] parameters)
         {

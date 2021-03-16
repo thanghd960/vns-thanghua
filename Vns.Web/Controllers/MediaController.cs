@@ -26,7 +26,6 @@ namespace Vns.Web.Controllers
         {
             try
             {
-
                 string filename = ContentDispositionHeaderValue.Parse(source.ContentDisposition).FileName.Trim('"');
                 string path = GetPathAndFilename(filename);
 

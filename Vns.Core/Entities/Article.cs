@@ -4,7 +4,6 @@ namespace Vns.Core.Entities
     public class Article : BaseEntity
     {
 
-
         public string Title { get; set; }
         public string DescriptionShort { get; set; }
         public string Content { get; set; }
@@ -13,6 +12,8 @@ namespace Vns.Core.Entities
         public bool IsFeature { get; set; }
         public bool IsTrendingNow { get; set; }
         public int CategoryId { get; set; }
+        public int ImageId { get; set; }
+
         public Article()
         {
             View = 0;

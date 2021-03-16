@@ -8,10 +8,10 @@ namespace Vns.Infrastructure.Services.Repository
     public class UnitOfWork : IUnitOfWork
     {
         private VnstyleDbContext _dbContext;
-
         private IBaseRepository<Article> _article;
         private IBaseRepository<ArticleTag> _articleTag;
-
+        private IBaseRepository<Image> _image;
+        private IBaseRepository<Tag> _tag;
 
         public UnitOfWork(VnstyleDbContext dbContext)
         {
@@ -32,6 +32,22 @@ namespace Vns.Infrastructure.Services.Repository
             {
                 return _articleTag ?? (_articleTag = new BaseRepository<ArticleTag>(_dbContext));
             }
+        }
+
+        public IBaseRepository<Image> Image 
+        {
+            get
+            {
+                return _image ?? (_image = new BaseRepository<Image>(_dbContext));
+            }    
+        }
+        
+        public IBaseRepository<Tag> Tag 
+        {
+            get
+            {
+                return _tag ?? (_tag = new BaseRepository<Tag>(_dbContext));
+            }   
         }
 
         public void Commit()

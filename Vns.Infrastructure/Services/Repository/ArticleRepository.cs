@@ -15,23 +15,10 @@ namespace Vns.Infrastructure.Services
     public class ArticleRepository : IArticleRepository
     {
         private readonly ILogger logger;
-        private readonly IBaseRepository<Article> _articleService;
-        private readonly IBaseRepository<ArticleTag> _articleTagServices;
-        private readonly IBaseRepository<Tag> _tagServices;
-        private readonly IBaseRepository<ArticleImage> _articleImageService;
-        private readonly IBaseRepository<Image> _imageServices;
-
-        public ArticleRepository(IBaseRepository<Article> articleService,
-            IBaseRepository<ArticleTag> articleTagServices,
-            IBaseRepository<Tag> tagServices,
-            IBaseRepository<Image> imageServices,
-            IBaseRepository<ArticleImage> articleImage)
+        private readonly IUnitOfWork _unitOfWork;
+        public ArticleRepository(IUnitOfWork unitOfWork)
         {
-            _articleService = articleService;
-            _articleTagServices = articleTagServices;
-            _tagServices = tagServices;
-            _imageServices = imageServices;
-            _articleImageService = articleImage;
+            _unitOfWork = unitOfWork;
         }
 
         public DetailResponse<int> Approve(int? id)
@@ -57,8 +44,8 @@ namespace Vns.Infrastructure.Services
             article.ApproveEntity();
             try
             {
-                _articleService.Update(article);
-                _articleService.SaveChanges();
+                _unitOfWork.Article.Update(article);
+                _unitOfWork.Article.SaveChanges();
                 response.Data = (int) id;
                 response.Status = true;
             } catch (Exception exception)
@@ -83,8 +70,7 @@ namespace Vns.Infrastructure.Services
                 response.Status = false;
                 return response;
             }
-            
-            Article article = _articleService.Table.Where(p => p.Id == articleId).FirstOrDefault();
+            Article article = _unitOfWork.Article.Table.Where(p => p.Id == articleId).FirstOrDefault();
             if (article == null)
             {
                 response.Code = MessageCode.BE0002;
@@ -104,7 +90,7 @@ namespace Vns.Infrastructure.Services
             if (request.PageIndex < 0) request.PageIndex = 0;
             if (request.PageSize < 1) request.PageSize = 10;
 
-            var articleQuery = _articleService.Table.Where(a => a.CategoryId == request.CategoryId);
+            var articleQuery = _unitOfWork.Article.Table.Where(a => a.CategoryId == request.CategoryId);
 
             if (EStatus.Actived.Equals(request.Status))
             {
@@ -144,8 +130,7 @@ namespace Vns.Infrastructure.Services
                 }
 
                 article.Inactive();
-                _articleService.Update(article);
-
+                _unitOfWork.Article.Update(article);
                 return new DetailResponse<int>()
                 {
                     Status = true,
@@ -166,14 +151,41 @@ namespace Vns.Infrastructure.Services
 
         public DetailResponse<ArticleDto> Insert(ArticleDto request)
         {
-            var article = new Article()
+            var result = new DetailResponse<ArticleDto>();
+            result.Data = request;
+
+            try 
             {
-                Title = request.Title,
-                DescriptionShort = request.Description,
-                Content = request.Content,
-                CategoryId = (int) request.Category
-            };
-            article.ApproveEntity();
+                var article = new Article()
+                {
+                    Title = request.Title,
+                    DescriptionShort = request.Description,
+                    Content = request.Content,
+                    CategoryId = (int) request.Category
+                };
+                article.ApproveEntity();
+                _unitOfWork.Article.Insert(article);
+
+                foreach(var tag in request.Tags)
+                {
+                    _unitOfWork.Tag.Insert(tag);
+                    _unitOfWork.ArticleTag.Insert(new ArticleTag()
+                    {
+                        TagId = tag.Id,
+                        ArticleId = article.Id       
+                    });
+                }
+                
+                result.Status = true;
+            } 
+            catch (Exception exception)
+            {
+                logger.LogError(exception.Message);
+                result.Status = false;
+                result.Code = MessageCode.Exception;
+                result.Message = ErrorConstant.GetMessageWithData(MessageCode.Exception, exception.Message);
+            }
+            return result;
         }
 
         public DetailResponse<ArticleDto> Update(ArticleDto request)
@@ -182,7 +194,7 @@ namespace Vns.Infrastructure.Services
         }
 
         private Article findById(int? id){
-            return _articleService.GetById(id);
+            return _unitOfWork.Article.GetById(id);
         }
 
         private ArticleDto mapToArticleResponse(Article article){
@@ -192,9 +204,7 @@ namespace Vns.Infrastructure.Services
                 Content = article.Content,
                 Description = article.DescriptionShort,
                 Title = article.Title,
-                FriendlyUrl = "",
-                Tags = new List<Tag>(),
-                Images = new List<Image>()
+                Tags = new List<Tag>()
             };
 
             try {
@@ -203,17 +213,10 @@ namespace Vns.Infrastructure.Services
                 logger.LogDebug(exception.ToString());
             }
 
-            var imgIds = _articleImageService.Table.Where(p => p.Status == true && p.ArticleId == article.Id).ToList();
-            if (imgIds.Count > 0){
-                imgIds.ForEach(img => {
-                    response.Images.Add(_imageServices.Table.Where(p => p.Id == img.ImageId).FirstOrDefault());
-                });
-            }
-
-            var tagIds = _articleTagServices.Table.Where(p => p.Status == true && p.ArticleId == article.Id).ToList();
+            var tagIds = _unitOfWork.ArticleTag.Table.Where(p => p.Status == true && p.ArticleId == article.Id).ToList();
             if (tagIds.Count > 0) {
                 tagIds.ForEach(tag => {
-                    response.Tags.Add(_tagServices.Table.Where(p => p.Id == tag.TagId).FirstOrDefault());
+                    response.Tags.Add(_unitOfWork.Tag.Table.Where(p => p.Id == tag.TagId).FirstOrDefault());
                 });
             }
 
