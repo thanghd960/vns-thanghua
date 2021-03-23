@@ -117,5 +117,7 @@ namespace Vns.Core.Commons.WebHelper
         /// <param name="useSsl">Use SSL</param>
         /// <returns>Store location</returns>
         string GetStoreLocation(bool useSsl);
+
+        string GetDomain();
     }
 }

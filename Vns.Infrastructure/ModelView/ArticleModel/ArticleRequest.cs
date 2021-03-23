@@ -6,7 +6,9 @@ namespace Vns.Infrastructure.ModelView.ArticleModel
 {
     public class ArticleRequest: PagingRequest
     {
-        public int CategoryId { get; set; }
+        public int? CategoryId { get; set; }
         public EStatus Status { get; set; }
+        public bool IsFeatured { get; set; }
+        public bool IsTrending { get; set; }
     }
 }

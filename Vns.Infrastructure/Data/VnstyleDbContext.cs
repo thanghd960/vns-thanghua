@@ -28,6 +28,8 @@ namespace Vns.Infrastructure.Data
         {
             base.OnModelCreating(builder);
 
+            InitCategory(builder);
+
             foreach (var entityType in builder.Model.GetEntityTypes())
             {
                 var table = entityType.GetTableName();
@@ -36,6 +38,8 @@ namespace Vns.Infrastructure.Data
                     entityType.SetTableName(table.Substring(6));
                 }
             };
+            
+            
 
 
         }
@@ -59,6 +63,99 @@ namespace Vns.Infrastructure.Data
         {
             throw new NotImplementedException();
             // return Database.
+        }
+
+
+        private void InitCategory(ModelBuilder builder)
+        {
+            List<Category> categories = new List<Category>();
+            Category category1 = new Category()
+            {
+                Id = 1,
+                Name = "TA",
+                Description = "Hình Xăm",
+                Index = 1,
+                Status = true,
+                ApprovedBy = "admin",
+                ApprovedDate = DateTime.Now,
+                CreatedBy = "admin",
+                CreatedDate = DateTime.Now
+            };
+
+
+            Category category2 = new Category()
+            {
+                Id = 2,
+                Name = "PI",
+                Description = "Xỏ khuyên",
+                Index = 2,
+                Status = true,
+                ApprovedBy = "admin",
+                ApprovedDate = DateTime.Now,
+                CreatedBy = "admin",
+                CreatedDate = DateTime.Now
+            };
+
+            Category category3 = new Category()
+            {
+                Id = 3,
+                Name = "PF",
+                Description = "Artist",
+                Index = 3,
+                Status = true,
+                ApprovedBy = "admin",
+                ApprovedDate = DateTime.Now,
+                CreatedBy = "admin",
+                CreatedDate = DateTime.Now
+            };
+
+            Category category4 = new Category()
+            {
+                Id = 4,
+                Name = "EV",
+                Description = "Sự kiện",
+                Index = 4,
+                Status = true,
+                ApprovedBy = "admin",
+                ApprovedDate = DateTime.Now,
+                CreatedBy = "admin",
+                CreatedDate = DateTime.Now
+            };
+
+            Category category5 = new Category()
+            {
+                Id = 5,
+                Name = "CO",
+                Description = "Khoá học",
+                Index = 5,
+                Status = true,
+                ApprovedBy = "admin",
+                ApprovedDate = DateTime.Now,
+                CreatedBy = "admin",
+                CreatedDate = DateTime.Now
+            };
+
+            Category category6 = new Category()
+            {
+                Id = 6,
+                Name = "IN",
+                Description = "Giới thiệu",
+                Index = 6,
+                Status = true,
+                ApprovedBy = "admin",
+                ApprovedDate = DateTime.Now,
+                CreatedBy = "admin",
+                CreatedDate = DateTime.Now
+            };
+
+            categories.Add(category1);
+            categories.Add(category2);
+            categories.Add(category3);
+            categories.Add(category4);
+            categories.Add(category5);
+            categories.Add(category6);
+
+            builder.Entity<Category>().HasData(categories);
         }
     }
 }

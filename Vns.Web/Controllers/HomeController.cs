@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Vns.Infrastructure.Services.IRepository;
 using Vns.Web.Models;
 
 namespace Vns.Web.Controllers
@@ -19,8 +20,9 @@ namespace Vns.Web.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Detail(int? id, string title = "")
         {
+            ViewData["ArticleId"] = id;
             return View();
         }
 

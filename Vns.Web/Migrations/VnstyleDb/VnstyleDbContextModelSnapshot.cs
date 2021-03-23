@@ -344,6 +344,80 @@ namespace Vns.Web.Migrations.VnstyleDb
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ApprovedBy = "admin",
+                            ApprovedDate = new DateTime(2021, 3, 20, 18, 44, 22, 619, DateTimeKind.Local).AddTicks(1810),
+                            CreatedBy = "admin",
+                            CreatedDate = new DateTime(2021, 3, 20, 18, 44, 22, 619, DateTimeKind.Local).AddTicks(2350),
+                            Description = "Hình Xăm",
+                            Index = 1,
+                            Name = "TA",
+                            Status = true
+                        },
+                        new
+                        {
+                            Id = 2,
+                            ApprovedBy = "admin",
+                            ApprovedDate = new DateTime(2021, 3, 20, 18, 44, 22, 619, DateTimeKind.Local).AddTicks(2450),
+                            CreatedBy = "admin",
+                            CreatedDate = new DateTime(2021, 3, 20, 18, 44, 22, 619, DateTimeKind.Local).AddTicks(2460),
+                            Description = "Xỏ khuyên",
+                            Index = 2,
+                            Name = "PI",
+                            Status = true
+                        },
+                        new
+                        {
+                            Id = 3,
+                            ApprovedBy = "admin",
+                            ApprovedDate = new DateTime(2021, 3, 20, 18, 44, 22, 619, DateTimeKind.Local).AddTicks(2470),
+                            CreatedBy = "admin",
+                            CreatedDate = new DateTime(2021, 3, 20, 18, 44, 22, 619, DateTimeKind.Local).AddTicks(2470),
+                            Description = "Artist",
+                            Index = 3,
+                            Name = "PF",
+                            Status = true
+                        },
+                        new
+                        {
+                            Id = 4,
+                            ApprovedBy = "admin",
+                            ApprovedDate = new DateTime(2021, 3, 20, 18, 44, 22, 619, DateTimeKind.Local).AddTicks(2470),
+                            CreatedBy = "admin",
+                            CreatedDate = new DateTime(2021, 3, 20, 18, 44, 22, 619, DateTimeKind.Local).AddTicks(2470),
+                            Description = "Sự kiện",
+                            Index = 4,
+                            Name = "EV",
+                            Status = true
+                        },
+                        new
+                        {
+                            Id = 5,
+                            ApprovedBy = "admin",
+                            ApprovedDate = new DateTime(2021, 3, 20, 18, 44, 22, 619, DateTimeKind.Local).AddTicks(2480),
+                            CreatedBy = "admin",
+                            CreatedDate = new DateTime(2021, 3, 20, 18, 44, 22, 619, DateTimeKind.Local).AddTicks(2480),
+                            Description = "Khoá học",
+                            Index = 5,
+                            Name = "CO",
+                            Status = true
+                        },
+                        new
+                        {
+                            Id = 6,
+                            ApprovedBy = "admin",
+                            ApprovedDate = new DateTime(2021, 3, 20, 18, 44, 22, 619, DateTimeKind.Local).AddTicks(2490),
+                            CreatedBy = "admin",
+                            CreatedDate = new DateTime(2021, 3, 20, 18, 44, 22, 619, DateTimeKind.Local).AddTicks(2490),
+                            Description = "Giới thiệu",
+                            Index = 6,
+                            Name = "IN",
+                            Status = true
+                        });
                 });
 
             modelBuilder.Entity("Vns.Core.Entities.Image", b =>

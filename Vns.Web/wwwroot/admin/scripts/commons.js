@@ -45,3 +45,16 @@ function uploadImages(file, callback) {
       }
   });
 }
+
+
+function invalidForm(id){
+  var element = document.getElementById(id);
+  element.classList.add("has-error");
+  element.classList.remove("has-success");
+}
+
+function validForm(id){
+    var element = document.getElementById(id);
+    element.classList.remove("has-error");
+    element.classList.add("has-success");
+}

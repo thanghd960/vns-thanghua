@@ -56,6 +56,7 @@ namespace Vns.Infrastructure.Services.Repository
         public async Task Insert(TEntity entity)
         {
             await _dbContext.AddAsync(entity);
+            _dbContext.SaveChanges();
         }
 
         public List<TEntity> InsertRange(IEnumerable<TEntity> listEntity)

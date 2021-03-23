@@ -13,6 +13,8 @@ namespace Vns.Infrastructure.Services.Repository
         private IBaseRepository<Image> _image;
         private IBaseRepository<Tag> _tag;
 
+        private IBaseRepository<Category> _category;
+
         public UnitOfWork(VnstyleDbContext dbContext)
         {
             _dbContext = dbContext;
@@ -48,6 +50,14 @@ namespace Vns.Infrastructure.Services.Repository
             {
                 return _tag ?? (_tag = new BaseRepository<Tag>(_dbContext));
             }   
+        }
+
+        public IBaseRepository<Category> Category 
+        {
+            get
+            {
+                return _category ?? (_category = new BaseRepository<Category>(_dbContext));
+            }       
         }
 
         public void Commit()

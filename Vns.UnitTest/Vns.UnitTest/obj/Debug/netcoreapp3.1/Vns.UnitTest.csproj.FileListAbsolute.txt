@@ -6,7 +6,16 @@
 /Users/thanghd/workplace/freelancer/thanghd-vnstyle/Vns.UnitTest/Vns.UnitTest/bin/Debug/netcoreapp3.1/Vns.UnitTest.runtimeconfig.dev.json
 /Users/thanghd/workplace/freelancer/thanghd-vnstyle/Vns.UnitTest/Vns.UnitTest/bin/Debug/netcoreapp3.1/Vns.UnitTest.dll
 /Users/thanghd/workplace/freelancer/thanghd-vnstyle/Vns.UnitTest/Vns.UnitTest/bin/Debug/netcoreapp3.1/Vns.UnitTest.pdb
+/Users/thanghd/workplace/freelancer/thanghd-vnstyle/Vns.UnitTest/Vns.UnitTest/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Http.dll
+/Users/thanghd/workplace/freelancer/thanghd-vnstyle/Vns.UnitTest/Vns.UnitTest/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Http.Abstractions.dll
+/Users/thanghd/workplace/freelancer/thanghd-vnstyle/Vns.UnitTest/Vns.UnitTest/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Http.Features.dll
+/Users/thanghd/workplace/freelancer/thanghd-vnstyle/Vns.UnitTest/Vns.UnitTest/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.WebUtilities.dll
 /Users/thanghd/workplace/freelancer/thanghd-vnstyle/Vns.UnitTest/Vns.UnitTest/bin/Debug/netcoreapp3.1/Microsoft.VisualStudio.CodeCoverage.Shim.dll
+/Users/thanghd/workplace/freelancer/thanghd-vnstyle/Vns.UnitTest/Vns.UnitTest/bin/Debug/netcoreapp3.1/Microsoft.Extensions.DependencyInjection.Abstractions.dll
+/Users/thanghd/workplace/freelancer/thanghd-vnstyle/Vns.UnitTest/Vns.UnitTest/bin/Debug/netcoreapp3.1/Microsoft.Extensions.ObjectPool.dll
+/Users/thanghd/workplace/freelancer/thanghd-vnstyle/Vns.UnitTest/Vns.UnitTest/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Options.dll
+/Users/thanghd/workplace/freelancer/thanghd-vnstyle/Vns.UnitTest/Vns.UnitTest/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Primitives.dll
+/Users/thanghd/workplace/freelancer/thanghd-vnstyle/Vns.UnitTest/Vns.UnitTest/bin/Debug/netcoreapp3.1/Microsoft.Net.Http.Headers.dll
 /Users/thanghd/workplace/freelancer/thanghd-vnstyle/Vns.UnitTest/Vns.UnitTest/bin/Debug/netcoreapp3.1/Microsoft.TestPlatform.CoreUtilities.dll
 /Users/thanghd/workplace/freelancer/thanghd-vnstyle/Vns.UnitTest/Vns.UnitTest/bin/Debug/netcoreapp3.1/Microsoft.TestPlatform.PlatformAbstractions.dll
 /Users/thanghd/workplace/freelancer/thanghd-vnstyle/Vns.UnitTest/Vns.UnitTest/bin/Debug/netcoreapp3.1/Microsoft.VisualStudio.TestPlatform.ObjectModel.dll

@@ -46,5 +46,11 @@
     <Folder Include="Areas\Portal\Views\Shared\Components\Menu\" />
     <Folder Include="wwwroot\imgs\" />
     <Folder Include="wwwroot\static\images\article\" />
+    <Folder Include="wwwroot\uploads\" />
+    <Folder Include="Components\" />
+    <Folder Include="Views\Shared\Components\" />
+    <Folder Include="Views\Shared\Components\Featured\" />
+    <Folder Include="Views\Shared\Components\Trending\" />
+    <Folder Include="Views\Shared\Components\DetailArticle\" />
   </ItemGroup>
 </Project>

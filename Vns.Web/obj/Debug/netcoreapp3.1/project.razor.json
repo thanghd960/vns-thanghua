@@ -12482,6 +12482,72 @@
         }
       },
       {
+        "HashCode": -1681676050,
+        "Kind": "MVC.ViewComponent",
+        "Name": "__Generated__DetailArticleViewComponentTagHelper",
+        "AssemblyName": "Vns.Web",
+        "CaseSensitive": false,
+        "TagMatchingRules": [
+          {
+            "TagName": "vc:detail-article",
+            "Attributes": [
+              {
+                "Name": "id"
+              }
+            ]
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "MVC.ViewComponent",
+            "Name": "id",
+            "TypeName": "System.Int32",
+            "Metadata": {
+              "Common.PropertyName": "id"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "ITagHelper",
+          "Common.TypeName": "__Generated__DetailArticleViewComponentTagHelper",
+          "MVC.ViewComponent.Name": "DetailArticle"
+        }
+      },
+      {
+        "HashCode": 1630918025,
+        "Kind": "MVC.ViewComponent",
+        "Name": "__Generated__FeaturedViewComponentTagHelper",
+        "AssemblyName": "Vns.Web",
+        "CaseSensitive": false,
+        "TagMatchingRules": [
+          {
+            "TagName": "vc:featured"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "ITagHelper",
+          "Common.TypeName": "__Generated__FeaturedViewComponentTagHelper",
+          "MVC.ViewComponent.Name": "Featured"
+        }
+      },
+      {
+        "HashCode": 275739222,
+        "Kind": "MVC.ViewComponent",
+        "Name": "__Generated__TrendingViewComponentTagHelper",
+        "AssemblyName": "Vns.Web",
+        "CaseSensitive": false,
+        "TagMatchingRules": [
+          {
+            "TagName": "vc:trending"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "ITagHelper",
+          "Common.TypeName": "__Generated__TrendingViewComponentTagHelper",
+          "MVC.ViewComponent.Name": "Trending"
+        }
+      },
+      {
         "HashCode": 899238057,
         "Kind": "Components.Bind",
         "Name": "Bind",
@@ -14457,6 +14523,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/Users/thanghd/workplace/freelancer/thanghd-vnstyle/Vns.Web/Views/Shared/Components/DetailArticle/Default.cshtml",
+      "TargetPath": "Views\\Shared\\Components\\DetailArticle\\Default.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/Users/thanghd/workplace/freelancer/thanghd-vnstyle/Vns.Web/Views/Shared/_Navbar.cshtml",
       "TargetPath": "Views\\Shared\\_Navbar.cshtml",
       "FileKind": "mvc"
@@ -14464,6 +14535,16 @@
     {
       "FilePath": "/Users/thanghd/workplace/freelancer/thanghd-vnstyle/Vns.Web/Views/Shared/_NewsLetter.cshtml",
       "TargetPath": "Views\\Shared\\_NewsLetter.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/thanghd/workplace/freelancer/thanghd-vnstyle/Vns.Web/Views/Shared/Components/Featured/Default.cshtml",
+      "TargetPath": "Views\\Shared\\Components\\Featured\\Default.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/thanghd/workplace/freelancer/thanghd-vnstyle/Vns.Web/Views/Shared/Components/Trending/Default.cshtml",
+      "TargetPath": "Views\\Shared\\Components\\Trending\\Default.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -14484,6 +14565,11 @@
     {
       "FilePath": "/Users/thanghd/workplace/freelancer/thanghd-vnstyle/Vns.Web/Views/Shared/_TrendingBar.cshtml",
       "TargetPath": "Views\\Shared\\_TrendingBar.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/thanghd/workplace/freelancer/thanghd-vnstyle/Vns.Web/Views/Home/Detail.cshtml",
+      "TargetPath": "Views\\Home\\Detail.cshtml",
       "FileKind": "mvc"
     },
     {

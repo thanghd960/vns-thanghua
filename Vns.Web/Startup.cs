@@ -16,6 +16,7 @@ using Vns.Infrastructure.Data;
 using Vns.Infrastructure.Services.IRepository;
 using Vns.Infrastructure.Services.Repository;
 using Vns.Infrastructure.Services;
+using Vns.Core.Commons.WebHelper;
 
 namespace Vns.Web
 {
@@ -40,9 +41,16 @@ namespace Vns.Web
                 .AddEntityFrameworkStores<VnstyleDbContext>();
 
             // services.AddScoped<IBaseRepository, BaseRepository<IEntity>>();
+
+            services.AddHttpContextAccessor();
+
             services.AddScoped<IMenuRepository, MenuRepository>();
             services.AddScoped<IArticleRepository, ArticleRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IWebHelper, WebHelper>();
+
+            
+
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
@@ -81,6 +89,12 @@ namespace Vns.Web
                 endpoints.MapControllerRoute(
                     name: "Portal",
                     pattern: "v1/{area:exists}/{controller=Home}/{action=Index}");
+
+                endpoints.MapControllerRoute(
+                    name: "article",
+                    pattern: "chi-tiet/{id}/{title}",
+                    defaults: new { controller = "Home", action = "Detail" }
+                );
 
                 endpoints.MapControllerRoute(
                     name: "default",

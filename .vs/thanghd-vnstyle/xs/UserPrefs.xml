@@ -1,31 +1,42 @@
 ﻿<Properties StartupConfiguration="{491D98D5-E089-4544-A64F-15D7EF9037EA}|Default">
   <MonoDevelop.Ide.ItemProperties.01.Web.Vns.Web PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Vns.Infrastructure/Data/VnstyleDbContext.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Vns.Web/Areas/Portal/Controllers/ArticleController.cs">
     <Files>
-      <File FileName="Vns.Web/Areas/Portal/Controllers/HomeController.cs" Line="10" Column="33" />
-      <File FileName="Vns.Web/Areas/Portal/Controllers/ArticleController.cs" Line="71" Column="14" />
-      <File FileName="Vns.Web/Controllers/MediaController.cs" Line="29" Column="114" />
-      <File FileName="Vns.Infrastructure/Services/Repository/ArticleRepository.cs" Line="1" Column="1" />
-      <File FileName="Vns.Web/Areas/Portal/Views/Article/Create.cshtml" Line="95" Column="55" />
-      <File FileName="Vns.Infrastructure/ModelView/ArticleModel/ArticleDto.cs" Line="7" Column="18" />
-      <File FileName="Vns.Infrastructure/Data/VnstyleDbContext.cs" Line="54" Column="10" />
+      <File FileName="Vns.Web/Controllers/HomeController.cs" Line="36" Column="1" />
+      <File FileName="Vns.Web/Areas/Portal/Controllers/ArticleController.cs" Line="40" Column="40" />
+      <File FileName="Vns.Web/Areas/Portal/Controllers/VideoController.cs" />
+      <File FileName="Vns.Web/Areas/Portal/Views/Article/Detail.cshtml" />
+      <File FileName="Vns.Web/Areas/Portal/Views/Article/Create.cshtml" />
+      <File FileName="Vns.Web/Areas/Portal/Controllers/BaseController.cs" />
+      <File FileName="Vns.Web/Areas/Portal/Controllers/HomeController.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="thanghd-vnstyle" expanded="True">
             <Node name="01.Web" expanded="True">
-              <Node name="Vns.Web" expanded="True" />
-            </Node>
-            <Node name="02.Infrastructure" expanded="True">
-              <Node name="Vns.Infrastructure" expanded="True">
-                <Node name="Data" expanded="True">
-                  <Node name="VnstyleDbContext.cs" selected="True" />
+              <Node name="Vns.Web" expanded="True">
+                <Node name="Areas" expanded="True">
+                  <Node name="Portal" expanded="True">
+                    <Node name="Controllers" expanded="True">
+                      <Node name="ArticleController.cs" selected="True" />
+                    </Node>
+                    <Node name="Views" expanded="True">
+                      <Node name="Article" expanded="True" />
+                    </Node>
+                  </Node>
                 </Node>
+                <Node name="Controllers" expanded="True" />
               </Node>
             </Node>
+            <Node name="02.Infrastructure" expanded="True">
+              <Node name="Vns.Infrastructure" expanded="True" />
+            </Node>
             <Node name="03.Core" expanded="True">
-              <Node name="Vns.Core" expanded="True" />
+              <Node name="Vns.Core" expanded="True">
+                <Node name="Commons" expanded="True" />
+                <Node name="Entities" expanded="True" />
+              </Node>
             </Node>
           </Node>
         </State>
@@ -37,9 +48,8 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Users/thanghd/workplace/freelancer/thanghd-vnstyle/Vns.Infrastructure/Services/Repository/ArticleRepository.cs" relfile="Vns.Infrastructure/Services/Repository/ArticleRepository.cs" line="103" column="1" />
-      <Breakpoint file="/Users/thanghd/workplace/freelancer/thanghd-vnstyle/Vns.Web/Controllers/MediaController.cs" relfile="Vns.Web/Controllers/MediaController.cs" line="29" column="1" />
-      <Breakpoint file="/Users/thanghd/workplace/freelancer/thanghd-vnstyle/Vns.Web/Areas/Portal/Controllers/ArticleController.cs" relfile="Vns.Web/Areas/Portal/Controllers/ArticleController.cs" line="57" column="1" />
+      <Breakpoint enabled="false" file="/Users/thanghd/workplace/freelancer/thanghd-vnstyle/Vns.Infrastructure/Services/Repository/ArticleRepository.cs" relfile="Vns.Infrastructure/Services/Repository/ArticleRepository.cs" line="105" column="1" />
+      <Breakpoint file="/Users/thanghd/workplace/freelancer/thanghd-vnstyle/Vns.Web/Controllers/HomeController.cs" relfile="Vns.Web/Controllers/HomeController.cs" line="25" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />

@@ -1,0 +1,39 @@
+﻿@model Vns.Core.Commons.Paging.IPagedList<Vns.Infrastructure.ModelView.ArticleModel.ArticleDto>
+<section class="trending-slider pb-0">
+    <div class="container">
+        <div class="ts-grid-box">
+            <h2 class="block-title">
+                <span class="title-angle-shap"> Trending</span>
+            </h2>
+            <div class="owl-carousel dot-style2" id="trending-slider">
+                @if (Model.Count > 0)
+                {
+                    @foreach (var item in Model)
+                    {
+                        <div class="item post-overaly-style post-md" style="background-image:url(@item.Images.Url)">
+                            <a href="#" class="image-link">&nbsp;</a>
+                            <div class="overlay-post-content">
+                                <div class="post-content">
+                                    <div class="grid-category">
+                                        <a class="post-cat sports" href="#">Sports</a>
+                                    </div>
+                                    <h2 class="post-title">
+                                        <a href="#">@item.Title </a>
+                                    </h2>
+                                    <div class="post-meta">
+                                        <ul>
+                                            <li><a href="#"><i class="fa fa-user"></i> @item.PublishBy</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- Item 1 end -->
+                    }
+                }
+            </div>
+            <!-- most-populers end-->
+        </div>
+        <!-- ts-populer-post-box end-->
+    </div>
+    <!-- container end-->
+</section>

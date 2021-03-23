@@ -14,7 +14,7 @@
         "outputPath": "/Users/thanghd/workplace/freelancer/thanghd-vnstyle/Vns.Core/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/thanghd/.nuget/NuGet/NuGet.Config"
+          "/Users/thanghd/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -70,7 +70,7 @@
         "outputPath": "/Users/thanghd/workplace/freelancer/thanghd-vnstyle/Vns.Infrastructure/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/thanghd/.nuget/NuGet/NuGet.Config"
+          "/Users/thanghd/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"

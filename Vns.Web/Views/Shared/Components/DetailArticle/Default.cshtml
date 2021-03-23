@@ -1,0 +1,13 @@
+﻿@model Vns.Core.Commons.BaseResponse.DetailResponse<Vns.Infrastructure.ModelView.ArticleModel.ArticleDto>
+
+@if (Model != null)
+{
+    <h2>@Model.Data.Title</h2>
+    <hr />
+    <p>@Model.Data.Description</p>
+    @Html.Raw(Model.Data.Content)
+}
+else
+{
+    <p>Not found</p>
+}

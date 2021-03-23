@@ -16,7 +16,10 @@ namespace Vns.Infrastructure.ModelView.ArticleModel
         public int Viewed { get; set; }
         public string PublishDate { get; set; }
         public string PublishBy { get; set; }
+        public int CategoryId { get; set; }
+        public bool Status { get; set; }
+        public bool IsTrending { get; set; }
+        public bool IsFeatured { get; set; }
 
-        public ERootCategory Category { get; set; }
     }
 }

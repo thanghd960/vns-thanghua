@@ -1,7 +1,7 @@
 @await Component.InvokeAsync("HeaderPortal", new { pageName = ViewData["Title"], actionName = ViewData["Action"] })
 <section class="content">
     <div class="row">
-        <div class="col-xs-12">
+        <div class="col-md-8">
             <div class="box box-primary">
             <div class="box-header with-border">
               <h3 class="box-title">Tạo mới bài viết</h3>
@@ -14,34 +14,58 @@
                 <div id="title-form-group" class="form-group" >
                   <label for="titleArticle">Tiêu đề bài viết</label>
                   <input type="text" class="form-control" id="title" placeholder="Tiêu đề bài viết" name="title" />
+                  <span class="help-block" id="notification-title-input"></span>
+                </div>
+
+                <div class="form-group">
+                  <label>Chọn loại bài viết</label>
+                  <select id="categories" class="form-control"></select>
+                </div>
+
+                <div class="form-group">
+                    <label>Loại hiển thị</label>
+                    <select id="display-home" class="form-control">
+                      <option value="DE">Mặc định</option>
+                      <option value="FE">Hiển thị phần nổi bật</option>
+                      <option value="TR">Hiển thị trending</option>
+                    </select>
                 </div>
 
                 <div id="image-form-group" class="form-group">
-                  <div class="row">
-                    
-                    <div class="col-sm-12 col-md-6">
-                      <label for="image">Upload hình ảnh</label>
-                      <input type="file" id="images" accept="image/*" name="image">
-                      <p class="help-block">Hình ảnh</p>
-                    </div>
-
-                    <div class="col-sm-12 col-md-6">
-                      <img id="img-loader" class="img-responsive" />    
-                    </div>
-                    
-                  </div>
+                  <label for="image">Upload hình ảnh</label>
+                  <input type="file" id="images" accept="image/*" name="image">
+                  <p class="help-block">Hình ảnh</p>
+                  <span class="help-block" id="notification-image-input"></span>
                 </div>
 
 
                 <div id="description-form-group" class="form-group" >
                   <label>Mô tả ngắn</label>
                   <textarea class="form-control" rows="3" placeholder="Enter ..." id="description"></textarea>
+                  <span class="help-block" id="notification-description-input"></span>
                 </div>
 
                 <div id="content-form-group" class="form-group">
+                  <label>Nội dung</label>
                   <div id="editor"></div>
+                  <span class="help-block" id="notification-content-input"></span>
                 </div>
               </div>
+              <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">HashTags</h3>
+            </div>
+            <div class="box-body">
+              <div class="input-group margin">
+                  <input type="text" class="form-control" id="input-tag">
+                      <span class="input-group-btn">
+                        <button type="button" class="btn btn-info btn-flat" id="put-tag">Thêm</button>
+                      </span>
+                </div>
+                <div class="margin" id="list-tags"></div>
+            </div>
+            <!-- /.box-body -->
+          </div>
               <!-- /.box-body -->
               <div class="box-footer">
                 <a class="btn btn-primary" id="btn-submit">Submit</a>
@@ -49,6 +73,12 @@
             </form>
           </div>
             <!-- /.box -->
+        </div>
+        <div class="col-md-4">
+          <div class="box box-primary">
+              <img id="img-loader" class="img-responsive" />    
+          </div>
+           
         </div>
     </div>
     
@@ -59,7 +89,7 @@
     <script type="text/javascript">
         ClassicEditor.create(document.querySelector('#editor'), {
             ckfinder: {
-                uploadUrl: '/ckfinder/connector?command=QuickUpload&type=Files&responseType=json'
+                uploadUrl: '/media/EditorUpload'
             },
             toolbar: ['ckfinder', 'imageUpload', '|', 'heading', '|', 'bold', 'italic', '|', 'undo', 'redo']
             })
@@ -70,64 +100,187 @@
 
     
     <script>
-        $(function () {
-            var img = $("#img-loader");
-            img.attr("src", noImage);
+      var tagsData = [];
+      var categories = [];
+      $(function () {
 
-            $("#images").change((e) => {
-              debugger;
-              var selectedFiles = $('#images').prop('files');
-              if (selectedFiles.length === 0){
-                img.attr("src", noImage );
-              } else {
-                encodeImageFileAsURL(selectedFiles, (base64) => {
-                  img.attr("src",base64);
-                });
+          var img = $("#img-loader");
+          img.attr("src", noImage);
+
+
+          // get categories article
+          $.ajax({
+            url: 'GetCategories',
+            type: "GET",
+            dataType: 'json', // added data type
+            success: function (data) {
+              console.log(data);
+              if (data){
+                data.forEach(item => {
+                  $('#categories').append("<option value='"+ item.id +"'>" + item.description + " </option>")
+                })
               }
-            });
-
-            $("#btn-submit").click((e) => {
-                e.preventDefault();
-
-                var image = $('#images').prop('files')[0];
-                  uploadImages(image, (url) => {
-                        var content = CKEDITOR.instances["editor1"].getData();
-                        var title = $('#title').val();
-                        var description = $('#description').val();
-                        
-                        var article = {
-                          content: content,
-                          title: title,
-                          description: description
-                        };
-                    
-                        postArticle(article);
-                });
-            });
-
-            var validateForm = (article) => {
-                return true;
+            },
+            error: function (passParams) {
+                console.log(passParams);
             }
+          });
 
-            var postArticle = (article) => {
-              console.log(article);
-              $.ajax({
-                  url: 'CreateArticle',
-                  data: JSON.stringify({article: article}),
-                  type: "POST",
-                  dataType: 'json',
-                  contentType: "application/json; charset=utf-8",  
-                  success: function (data) {
-                    console.log(data);
-                  },
-                  error: function (passParams) {
-                      debugger;
-                  }
+          $("#images").change((e) => {
+            var selectedFiles = $('#images').prop('files');
+            if (selectedFiles.length === 0){
+              img.attr("src", noImage );
+            } else {
+              encodeImageFileAsURL(selectedFiles, (base64) => {
+                img.attr("src",base64);
               });
             }
-        });
+          });
+
+          $("#btn-submit").click((e) => {
+              e.preventDefault();
+              
+              if (validateForm()){
+                var image = $('#images').prop('files')[0];
+                  uploadImages(image, (url) => {
+                    var content = CKEDITOR.instances["editor1"].getData();
+                    var title = $('#title').val();
+                    var description = $('#description').val();
+                    var tags = tagsData.map(item => { return { Name: item }});
+                    var categoryId = $('#categories').val();
+                    var display = $('#display-home').val();
+                    
+
+                    var article = {
+                      Content: content,
+                      Title: title,
+                      Description: description,
+                      CategoryId: categoryId,
+                      Images: {
+                        Url: url
+                      },
+                      Tags: tags,
+                      IsTrending: display === "TR" ? true : false,
+                      IsFeatured: display === "FE" ? true : false
+                    };
+                
+                    $.ajax({
+                      url: 'CreateArticle',
+                      data: article,
+                      type: "POST",
+                      success: function (data) {
+                        window.location.href = 'Index';
+                      },
+                      error: function (passParams) { }
+                    });
+                });
+              }
+          });
+
+
+          $("#put-tag").click(e => {
+            var tag = $("#input-tag");
+            if (tag.val()) {
+              addTag(tag.val())
+            }
+            tag.val("");
+          });
+
+          var validateForm = () => {
+            var isValid = true;
+
+            var title = $("#title").val();
+            var description = $("#description").val();
+            var content = CKEDITOR.instances["editor1"].getData();
+            var selectedFiles = $('#images').prop('files');
+
+            if (!title){
+              isValid = false;
+              invalidForm("title-form-group");
+              $('#notification-title-input').text('Tiêu đề bài viết không được để trống');
+            } else {
+              validForm("title-form-group");
+              $('#notification-title-input').text('');
+            }
+
+            if (!description){
+              isValid = false;
+              invalidForm('description-form-group');
+              $('#notification-description-input').text('Mô tả bài viết không được để trống');
+            } else {
+              validForm('description-form-group');
+              $('#notification-description-input').text('');
+            }
+
+            if (!content){
+              isValid = false;
+              invalidForm('content-form-group');
+              $('#notification-content-input').text('Nôi dung bài viết không được để trống');
+            } else {
+              validForm('content-form-group');
+              $('#notification-content-input').text('');
+            }
+
+            if (selectedFiles.length === 0){
+                isValid = false;
+                invalidForm('image-form-group');
+                $('#notification-image-input').text('Hình ảnh cho bài viết là bắt buộc');
+            } else {
+              validForm('image-form-group');
+              $('#notification-image-input').text('');
+            }
+            
+            return isValid;
+          }
+
+          var postArticle = (article) => {
+            $.ajax({
+                url: 'CreateArticle',
+                data: JSON.stringify({article: article}),
+                type: "POST",
+                dataType: 'json',
+                contentType: "application/json; charset=utf-8",  
+                success: function (data) {
+                  
+                  console.log(data);
+                },
+                error: function (passParams) {
+                    debugger;
+                }
+            });
+          }
+      });
+
+      var loadTags = () => {
+        if (tagsData) {
+          refreshTags();
+          tagsData.forEach((item, index) => {
+            $('#list-tags').append("<div class='btn-group' style='margin: 0px 5px 0px 0px;'> <a class='btn btn-info' >" + item + "<button type='button' class='close' style='margin: -10px -10px 0px 10px;' onclick='removeTag("+index+")'>&times;</button></a> </div>");
+          });
+        }
         
+      }
+
+      var removeTag = (index) => {
+        if (index > -1) {
+          tagsData.splice(index, 1);
+        }
+        loadTags();
+      }
         
+      var refreshTags = () => {
+          const listTag = document.getElementById("list-tags");
+          listTag.textContent = '';
+        }
+
+      var addTag = (tag) => {
+        tag = tag.trim();
+        if (!tagsData.includes(tag) && tagsData.length <= 6) {
+          tagsData.push(tag);
+        }
+        loadTags();
+      }
     </script>
 
 }
+

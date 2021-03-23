@@ -20,6 +20,7 @@ namespace Vns.Core.Entities
 
         public void ApproveEntity()
         {
+            Status = true;
             ApprovedBy = "admin";
             ApprovedDate = DateTime.Now;
         }

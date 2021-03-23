@@ -11,6 +11,8 @@ namespace Vns.Infrastructure.Services.IRepository
         DetailResponse<ArticleDto> Insert(ArticleDto request);
         DetailResponse<ArticleDto> Update(ArticleDto request);
         DetailResponse<ArticleDto> GetDetail(int? id);
-        IPagedList<ArticleDto> GetList(ArticleRequest request);  
+        IPagedList<ArticleDto> GetList(ArticleRequest request);
+        DetailResponse<int> Remove(int? id);
+
     }
 }

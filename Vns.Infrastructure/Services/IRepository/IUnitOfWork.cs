@@ -9,6 +9,8 @@ namespace Vns.Infrastructure.Services.IRepository
         IBaseRepository<ArticleTag> ArticleTag { get; }
         IBaseRepository<Tag> Tag { get; }
         IBaseRepository<Image> Image { get; }
+
+        IBaseRepository<Category> Category { get; }
         void Commit();
 
     }

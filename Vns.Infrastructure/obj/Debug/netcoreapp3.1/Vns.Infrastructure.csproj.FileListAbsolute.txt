@@ -1,4 +1,6 @@
 /Users/thanghd/workplace/freelancer/thanghd-vnstyle/Vns.Infrastructure/bin/Debug/netcoreapp3.1/Vns.Infrastructure.deps.json
+/Users/thanghd/workplace/freelancer/thanghd-vnstyle/Vns.Infrastructure/bin/Debug/netcoreapp3.1/Vns.Infrastructure.runtimeconfig.json
+/Users/thanghd/workplace/freelancer/thanghd-vnstyle/Vns.Infrastructure/bin/Debug/netcoreapp3.1/Vns.Infrastructure.runtimeconfig.dev.json
 /Users/thanghd/workplace/freelancer/thanghd-vnstyle/Vns.Infrastructure/bin/Debug/netcoreapp3.1/Vns.Infrastructure.dll
 /Users/thanghd/workplace/freelancer/thanghd-vnstyle/Vns.Infrastructure/bin/Debug/netcoreapp3.1/Vns.Infrastructure.pdb
 /Users/thanghd/workplace/freelancer/thanghd-vnstyle/Vns.Infrastructure/bin/Debug/netcoreapp3.1/Vns.Core.dll
@@ -10,6 +12,4 @@
 /Users/thanghd/workplace/freelancer/thanghd-vnstyle/Vns.Infrastructure/obj/Debug/netcoreapp3.1/Vns.Infrastructure.csproj.CopyComplete
 /Users/thanghd/workplace/freelancer/thanghd-vnstyle/Vns.Infrastructure/obj/Debug/netcoreapp3.1/Vns.Infrastructure.dll
 /Users/thanghd/workplace/freelancer/thanghd-vnstyle/Vns.Infrastructure/obj/Debug/netcoreapp3.1/Vns.Infrastructure.pdb
-/Users/thanghd/workplace/freelancer/thanghd-vnstyle/Vns.Infrastructure/bin/Debug/netcoreapp3.1/Vns.Infrastructure.runtimeconfig.json
-/Users/thanghd/workplace/freelancer/thanghd-vnstyle/Vns.Infrastructure/bin/Debug/netcoreapp3.1/Vns.Infrastructure.runtimeconfig.dev.json
 /Users/thanghd/workplace/freelancer/thanghd-vnstyle/Vns.Infrastructure/obj/Debug/netcoreapp3.1/Vns.Infrastructure.genruntimeconfig.cache

@@ -5,11 +5,14 @@ namespace Vns.Core.Commons.WebHelper
 {
     public partial class WebHelper : IWebHelper
     {
-        private readonly HttpContext _httpContext;
+        // private readonly HttpContext _httpContext;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public WebHelper (HttpContext httpContext)
+
+        public WebHelper (IHttpContextAccessor httpContextAccessor)
         {
-            _httpContext = httpContext;
+            // _httpContext = httpContext;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public bool IsRequestBeingRedirected => throw new NotImplementedException();
@@ -18,7 +21,12 @@ namespace Vns.Core.Commons.WebHelper
 
         public string GetCurrentIpAddress()
         {
-            return _httpContext.Request.HttpContext.Connection.RemoteIpAddress.ToString();
+            return _httpContextAccessor.HttpContext.Request.HttpContext.Connection.RemoteIpAddress.ToString();
+        }
+
+        public string GetDomain()
+        {
+            return _httpContextAccessor.HttpContext.Request.Host.ToString();
         }
 
         public string GetStoreHost(bool useSsl)

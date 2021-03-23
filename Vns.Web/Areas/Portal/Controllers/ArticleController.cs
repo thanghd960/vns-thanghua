@@ -22,15 +22,15 @@ namespace Vns.Web.Areas.Portal.Controllers
         }
 
         // GET: /<controller>/
-        public IActionResult Index(string search = "", int pageIndex = 0, bool isActive = true)
+        public IActionResult Index(string search = "", int pageIndex = 0)
         {
             ViewData["Title"] = "Bài Viết";
             ArticleRequest request = new ArticleRequest()
             {
                 Keyword = search == "" ? null : search,
                 PageIndex = pageIndex,
-                CategoryId = 1,
-                Status = isActive == true ? EStatus.Actived : EStatus.Inactived
+                CategoryId = null,
+                Status = EStatus.All
             };
             IPagedList<ArticleDto> articles = _articleRepository.GetList(request);
             
@@ -40,7 +40,8 @@ namespace Vns.Web.Areas.Portal.Controllers
         public IActionResult Detail(int? id) {
             ViewData["Title"] = "Bài Viết";
             ViewData["Action"] = "Chi tiết";
-            return View();
+            var article = _articleRepository.GetDetail(id);
+            return View(article);
         }
 
         public IActionResult Create()
@@ -48,6 +49,12 @@ namespace Vns.Web.Areas.Portal.Controllers
             ViewData["Title"] = "Bài Viết";
             ViewData["Action"] = "Tạo mới";
             return View();
+        }
+
+        [HttpGet]
+        public JsonResult GetCategories()
+        {
+            return Json(_unitOfWork.Category.GetAll());
         }
 
 
@@ -61,7 +68,6 @@ namespace Vns.Web.Areas.Portal.Controllers
                 {
                     Status = false,
                     Data = article,
-                    Code = MessageCode.BE0003,
                     Message = ErrorConstant.Get(MessageCode.BE0003)
 
                 };
@@ -74,7 +80,6 @@ namespace Vns.Web.Areas.Portal.Controllers
                 {
                     Status = false,
                     Data = article,
-                    Code = MessageCode.BE0004,
                     Message = ErrorConstant.Get(MessageCode.BE0004)
 
                 };
@@ -85,5 +90,18 @@ namespace Vns.Web.Areas.Portal.Controllers
             return Json(result);
         }
 
+        [HttpPost]
+        public JsonResult ActiveArticle(int? id)
+        {
+            DetailResponse<int> response = new DetailResponse<int>();
+            response = _articleRepository.Approve(id);
+            return Json(response);
+        }
+
+        [HttpPost]
+        public JsonResult DeleteArticle(int? id)
+        {
+            return Json(_articleRepository.Remove(id));
+        }
     }
 }

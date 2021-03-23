@@ -1,0 +1,95 @@
+﻿@model Vns.Core.Commons.Paging.IPagedList<Vns.Infrastructure.ModelView.ArticleModel.ArticleDto>
+
+
+
+@if (Model.Count >= 3)
+{
+    <section class="featured-post-area no-padding">
+        <div class="container">
+            <div class="row ts-gutter-20">
+                <div class="col-lg-7 col-md-12 pad-r">
+                    <div id="featured-slider" class="owl-carousel owl-theme featured-slider">
+                        <div class="item post-overaly-style" style="background-image:url(@Model[0].Images.Url)">
+                            <div class="featured-post">
+                                <a href="#" class="image-link">&nbsp;</a>
+                                <div class="overlay-post-content">
+                                    <div class="post-content">
+                                        <div class="grid-category">
+                                            @if (Model[0].Tags.Count > 0)
+                                            {
+                                                foreach (var tag in Model[0].Tags)
+                                                {
+                                                    <a class="post-cat fashion" href="#">tag.Name</a>
+                                                }
+                                            }
+
+                                        </div>
+                                        <h2 class="post-title title-lg">
+                                            <a href="#">@Model[0].Title</a>
+                                        </h2>
+                                        <div class="post-meta">
+                                            <ul>
+                                                <li><a href="#"><i class="fa fa-user"></i>@Model[0].PublishBy</a></li>
+                                                <li><a href="#"><i class="icon icon-clock"></i>@Model[0].PublishDate</a></li>
+                                                <li><a href="#" class="view"><i class="icon icon-fire"></i>0</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!--/ Featured post end -->
+                        </div><!-- Item 1 end -->
+                    </div><!-- Featured owl carousel end-->
+                </div><!-- Col 7 end -->
+                <div class="col-lg-5 col-md-12 pad-l">
+                    <div class="row ts-gutter-20">
+                        <div class="col-md-12">
+                            <div class="post-overaly-style post-md ml-8" style="background-image:url(@Model[1].Images.Url)">
+                                <div class="post-content">
+                                    @if (Model[1].Tags.Count > 0)
+                                    {
+                                        foreach (var tag in Model[1].Tags)
+                                        {
+                                            <a class="post-cat fashion" href="#">tag.Name</a>
+                                        }
+                                    }
+                                    <h2 class="post-title title-md">
+                                        <a href="#">@Model[1].Title</a>
+                                    </h2>
+                                    <div class="post-meta">
+                                        <ul>
+                                            <li><a href="#"><i class="fa fa-user"></i>@Model[1].PublishBy</a></li>
+                                            <li><a href="#"><i class="icon icon-clock"></i>@Model[1].PublishDate</a></li>
+                                        </ul>
+                                    </div>
+                                </div><!-- Post content end -->
+                            </div><!-- Post Overaly end -->
+                        </div><!-- Col end -->
+                        <div class="col-md-12">
+                            <div class="post-overaly-style post-sm overlay-primary  ml-8" style="background-image:url(@Model[2].Images.Url)">
+                                <div class="post-content">
+                                    @if (Model[2].Tags.Count > 0)
+                                    {
+                                        foreach (var tag in Model[2].Tags)
+                                        {
+                                            <a class="post-cat fashion" href="#">tag.Name</a>
+                                        }
+                                    }
+                                    <h2 class="post-title title-md">
+                                        <a href="#">@Model[2].Title</a>
+                                    </h2>
+                                    <div class="post-meta">
+                                        <ul>
+                                            <li><a href="#"><i class="fa fa-user"></i>@Model[2].PublishBy</a></li>
+                                            <li><a href="#"><i class="icon icon-clock"></i>@Model[2].PublishDate</a></li>
+                                        </ul>
+                                    </div>
+                                </div><!-- Post content end -->
+                            </div><!-- Post Overaly end -->
+                        </div><!-- Col end -->
+                    </div><!-- row end -->
+                </div><!-- Col 5 end -->
+            </div><!-- Row end -->
+        </div><!-- Container end -->
+    </section><!-- Feature post end -->
+}
+
